@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>漳州东山岛 · 海愈渔旅示范基地</title>
+<meta name="description" content="东山岛海愈渔旅示范基地——废旧鲍鱼场改造升级，鲍鱼规模化养殖，全周期数智可视化。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- ==================== 加载动画 ==================== -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">
+      <div class="loader-ripple"></div>
+      <div class="loader-ripple" style="animation-delay:.6s"></div>
+      <div class="loader-ripple" style="animation-delay:1.2s"></div>
+      <div class="loader-fish"><i class="fas fa-fish"></i></div>
+    </div>
+    <div class="loader-text">海愈<span>·</span>东山岛</div>
+    <div class="loader-sub">数智兴渔 · 旧场焕新</div>
+    <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+</div>
+
+<!-- ==================== 导航栏 ==================== -->
+<header id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand"><i class="fas fa-fish"></i><span>海愈·东山岛</span></a>
+    <button class="hamburger" id="navToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+    <nav class="nav-right-controls" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link">首页</a></li>
+        <li><a href="#overview" class="nav-link">基地概况</a></li>
+        <li><a href="#platform" class="nav-link">鲍鱼生长</a></li>
+        <li><a href="#research" class="nav-link">研学实践</a></li>
+      </ul>
+    </nav>
+    <div class="nav-progress" id="navProgress"></div>
+  </div>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero" class="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-fish"></i> 海愈 · 数智兴渔</div>
+    <h1 class="hero-title">漳州东山岛<span>海愈渔旅示范基地</span></h1>
+    <p class="hero-subtitle">旧场焕新 · 数智兴渔</p>
+    <p class="hero-quote">打造东山鲍鱼产业升级示范标杆</p>
+    <div class="hero-actions">
+      <a href="#platform" class="hero-btn primary"><i class="fas fa-chart-line"></i> 探索鲍鱼生长</a>
+      <a href="#research" class="hero-btn ghost"><i class="fas fa-graduation-cap"></i> 研学实践</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span>向下探索</span></div>
+</section>
+
+
+<!-- ==================== 基地产业概况 ==================== -->
+<section id="overview" class="section">
+  <!-- ===== 顶部：基地时光轮播 ===== -->
+  <div class="ov-carousel" id="ovCarousel" data-aos>
+    <div class="ov-carousel-title">
+      <div class="ov-carousel-label">旧场焕新 · 数智兴渔</div>
+      <h2 class="ov-carousel-heading">基地概况</h2>
+      <p class="ov-carousel-desc">立足东山鲍鱼主产区，以废旧养殖场地改造升级为核心特色</p>
+    </div>
+    <div class="ov-carousel-inner">
+      <div class="ov-carousel-track" id="ovTrack">
+        <div class="ov-carousel-slide active" data-idx="0">
+          <img src="images/change1.JPG" alt="" loading="lazy">
+          <div class="ov-carousel-caption">基地实景</div>
+        </div>
+        <div class="ov-carousel-slide" data-idx="1">
+          <img src="images/change2.JPG" alt="" loading="lazy">
+          <div class="ov-carousel-caption">基地实景</div>
+        </div>
+        <div class="ov-carousel-slide" data-idx="2">
+          <img src="images/change3.JPG" alt="" loading="lazy">
+          <div class="ov-carousel-caption">基地实景</div>
+        </div>
+        <div class="ov-carousel-slide" data-idx="3">
+          <img src="images/change4.JPG" alt="" loading="lazy">
+          <div class="ov-carousel-caption">基地实景</div>
+        </div>
+      </div>
+    </div>
+    <div class="ov-carousel-indicators" id="ovIndicators">
+      <span class="ov-dot active" data-idx="0"></span>
+      <span class="ov-dot" data-idx="1"></span>
+      <span class="ov-dot" data-idx="2"></span>
+      <span class="ov-dot" data-idx="3"></span>
+    </div>
+    <button class="ov-carousel-arrow ov-arrow-prev" id="ovPrev" aria-label="上一张"><i class="fas fa-chevron-left"></i></button>
+    <button class="ov-carousel-arrow ov-arrow-next" id="ovNext" aria-label="下一张"><i class="fas fa-chevron-right"></i></button>
+    <div class="ov-carousel-stats">
+      <div class="ov-cstat"><span class="ov-cstat-num" data-target="35">0</span><span class="ov-cstat-unit">亩+</span><span class="ov-cstat-lbl">改造面积</span></div>
+      <div class="ov-cstat"><span class="ov-cstat-num" data-target="12">0</span><span class="ov-cstat-unit">年</span><span class="ov-cstat-lbl">养殖积淀</span></div>
+      <div class="ov-cstat"><span class="ov-cstat-num" data-target="4">0</span><span class="ov-cstat-unit">大</span><span class="ov-cstat-lbl">核心片区</span></div>
+      <div class="ov-cstat"><span class="ov-cstat-num" data-target="6">0</span><span class="ov-cstat-unit">阶段</span><span class="ov-cstat-lbl">全周期管理</span></div>
+    </div>
+  </div>
+
+  <!-- ===== 中部：基地简介 ===== -->
+  <div class="ov-intro-section">
+    <div class="section-inner">
+      <div class="ov-intro-block" data-aos>
+        <h3 class="ov-intro-heading"><span class="ov-intro-bar"></span>基地简介</h3>
+        <p>海愈东山岛渔旅示范基地，坐落于漳州东山岛鲍鱼核心主产区，依托本地得天独厚的海域资源与多年鲍鱼养殖产业底蕴，以<strong>废旧鲍鱼养殖场地翻新改造</strong>为核心特色。</p>
+        <p>基地在保留原生养殖生态、传统鲍鱼养殖业态的基础上，盘活闲置老旧养殖场地，规整养殖片区、升级养殖配套设施，实现旧场地资源再生利用。项目结合现代数字科创技术，搭建鲍鱼全周期数智化养殖管控体系，打破传统渔业发展局限。</p>
+        <p>同时基地融合产业研学、生态科普、渔旅体验多元业态，打造集<strong>标准化养殖、数智化管控、产学研实践、生态渔旅融合</strong>于一体的现代化鲍鱼渔旅示范基地，助力东山传统鲍鱼产业转型升级。</p>
+        <div class="ov-intro-features">
+          <div class="ov-feat-item">
+            <div class="ov-feat-icon"><i class="fas fa-map-pin"></i></div>
+            <span class="ov-feat-text">东山鲍鱼核心产区</span>
+          </div>
+          <div class="ov-feat-item">
+            <div class="ov-feat-icon"><i class="fas fa-sync-alt"></i></div>
+            <span class="ov-feat-text">旧场翻新改造</span>
+          </div>
+          <div class="ov-feat-item">
+            <div class="ov-feat-icon"><i class="fas fa-chart-line"></i></div>
+            <span class="ov-feat-text">数智化养殖管控</span>
+          </div>
+          <div class="ov-feat-item">
+            <div class="ov-feat-icon"><i class="fas fa-water"></i></div>
+            <span class="ov-feat-text">渔旅融合示范</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 下半部分：基地鲍鱼实拍视频 ===== -->
+  <div class="ov-video-section">
+    <div class="section-inner">
+      <div class="ov-video-block" data-aos>
+        <div class="ov-video-multi">
+          <div class="ov-video-card-sm">
+            <h3 class="ov-intro-heading"><span class="ov-intro-bar"></span>鲍鱼打捞过程</h3>
+            <div class="ov-video-wrapper-sm">
+              <video class="ov-video-player-sm" controls preload="metadata">
+                <source src="images/by1.mp4" type="video/mp4">
+                您的浏览器不支持视频播放
+              </video>
+            </div>
+          </div>
+          <div class="ov-video-card-sm">
+            <h3 class="ov-intro-heading"><span class="ov-intro-bar"></span>鲍鱼背面展示</h3>
+            <div class="ov-video-wrapper-sm">
+              <video class="ov-video-player-sm" controls preload="metadata">
+                <source src="images/by2.mp4" type="video/mp4">
+                您的浏览器不支持视频播放
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="ov-video-card">
+          <h3 class="ov-intro-heading"><span class="ov-intro-bar"></span>基地鲍鱼实拍视频</h3>
+          <div class="ov-video-wrapper">
+            <video class="ov-video-player" controls preload="metadata">
+              <source src="images/MAH07335.MP4" type="video/mp4">
+              您的浏览器不支持视频播放
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 数智可视化平台 ==================== -->
+<section id="platform" class="section">
+  <div class="section-hero-bg" style="background:linear-gradient(135deg,#0a3d5c,#0d5e8a,#1a6b8a,#1a8bc4)">
+    <div class="section-hero-inner">
+      <div class="section-label" style="justify-content:center"><div class="bar"></div><span class="text">鲍鱼生长</span></div>
+      <h2 class="section-title">鲍鱼六大养殖工序</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,.7);margin:0 auto">从附着到采收 · 全生命周期交互展示</p>
+    </div>
+  </div>
+  <div class="section-inner">
+    <div class="g-stage-ocean-bg"></div>
+    <div class="g-stage" data-aos>
+
+      <!-- 横向滚动阶段卡片 -->
+      <div class="g-stage-cards-wrapper">
+        <div class="g-stage-cards" id="gStageCards">
+          <div class="g-stage-card active" data-idx="0">
+            <div class="g-sc-ring"><span class="g-sc-ring-inner"></span></div>
+            <div class="g-sc-img"><img src="images/baoyu1.jpeg" alt="" loading="lazy"></div>
+            <div class="g-sc-info">
+              <span class="g-sc-num">01</span>
+              <span class="g-sc-name">育苗附着期</span>
+              <span class="g-sc-period">1–15天</span>
+            </div>
+          </div>
+          <div class="g-stage-card" data-idx="1">
+            <div class="g-sc-ring"><span class="g-sc-ring-inner"></span></div>
+            <div class="g-sc-img"><img src="images/baoyu2.jpg" alt="" loading="lazy"></div>
+            <div class="g-sc-info">
+              <span class="g-sc-num">02</span>
+              <span class="g-sc-name">稚贝生长期</span>
+              <span class="g-sc-period">15–60天</span>
+            </div>
+          </div>
+          <div class="g-stage-card" data-idx="2">
+            <div class="g-sc-ring"><span class="g-sc-ring-inner"></span></div>
+            <div class="g-sc-img"><img src="images/baoyu3.jpeg" alt="" loading="lazy"></div>
+            <div class="g-sc-info">
+              <span class="g-sc-num">03</span>
+              <span class="g-sc-name">幼鲍培育期</span>
+              <span class="g-sc-period">2–6月</span>
+            </div>
+          </div>
+          <div class="g-stage-card" data-idx="3">
+            <div class="g-sc-ring"><span class="g-sc-ring-inner"></span></div>
+            <div class="g-sc-img"><img src="images/baoyu4.jpeg" alt="" loading="lazy"></div>
+            <div class="g-sc-info">
+              <span class="g-sc-num">04</span>
+              <span class="g-sc-name">海上养成期</span>
+              <span class="g-sc-period">6–18月</span>
+            </div>
+          </div>
+          <div class="g-stage-card" data-idx="4">
+            <div class="g-sc-ring"><span class="g-sc-ring-inner"></span></div>
+            <div class="g-sc-img"><img src="images/baoyu5.jpeg" alt="" loading="lazy"></div>
+            <div class="g-sc-info">
+              <span class="g-sc-num">05</span>
+              <span class="g-sc-name">成品育肥期</span>
+              <span class="g-sc-period">18–22月</span>
+            </div>
+          </div>
+          <div class="g-stage-card" data-idx="5">
+            <div class="g-sc-ring"><span class="g-sc-ring-inner"></span></div>
+            <div class="g-sc-img"><img src="images/baoyu6.jpeg" alt="" loading="lazy"></div>
+            <div class="g-sc-info">
+              <span class="g-sc-num">06</span>
+              <span class="g-sc-name">采收储运期</span>
+              <span class="g-sc-period">22月+</span>
+            </div>
+          </div>
+        </div>
+        <button class="g-cards-arrow g-cards-prev" id="gCardsPrev" aria-label="上一张"><i class="fas fa-chevron-left"></i></button>
+        <button class="g-cards-arrow g-cards-next" id="gCardsNext" aria-label="下一张"><i class="fas fa-chevron-right"></i></button>
+      </div>
+
+      <!-- 详情展示区 -->
+      <div class="g-stage-detail">
+        <div class="g-detail-header">
+          <span class="g-detail-num" id="gDetailNum">01 / 06</span>
+          <h3 class="g-detail-name" id="gDetailName">育苗附着期</h3>
+        </div>
+
+        <!-- 详情大图 -->
+        <div class="g-detail-img">
+          <img id="gDetailImg" src="images/baoyu1.jpeg" alt="" loading="lazy">
+        </div>
+
+        <!-- 参数卡片 可展开式 -->
+        <div class="g-stage-params" id="gParams">
+          <div class="g-pcard" data-expand>
+            <div class="g-pc-header">
+              <div class="g-pc-icon"><i class="fas fa-thermometer-half"></i></div>
+              <div class="g-pc-body">
+                <span class="g-pc-label">养殖水温</span>
+                <span class="g-pc-value" id="gParamTemp">20–24°C</span>
+              </div>
+              <button class="g-pc-toggle"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="g-pc-expand">
+              <p>水温是鲍鱼生长的关键环境因素，适宜的水温能促进鲍鱼的新陈代谢和生长速度。育苗阶段水温需保持在20-24°C，过高或过低都会影响幼虫的存活率。</p>
+            </div>
+          </div>
+          <div class="g-pcard" data-expand>
+            <div class="g-pc-header">
+              <div class="g-pc-icon"><i class="fas fa-clock"></i></div>
+              <div class="g-pc-body">
+                <span class="g-pc-label">生长周期</span>
+                <span class="g-pc-value" id="gParamPeriod">1–15天</span>
+              </div>
+              <button class="g-pc-toggle"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="g-pc-expand">
+              <p>此阶段为鲍鱼生命周期的起始阶段，从幼虫附着到开始摄食，标志着鲍鱼从浮游生活向底栖生活的转变。</p>
+            </div>
+          </div>
+          <div class="g-pcard g-pcard-wide" data-expand>
+            <div class="g-pc-header">
+              <div class="g-pc-icon"><i class="fas fa-info-circle"></i></div>
+              <div class="g-pc-body">
+                <span class="g-pc-label">生长特征</span>
+                <span class="g-pc-value" id="gParamDesc">鲍鱼幼虫附着在采苗板上，分泌足丝固定，开始底栖生活</span>
+              </div>
+              <button class="g-pc-toggle"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="g-pc-expand">
+              <p>鲍鱼幼虫在变态后会寻找合适的附着基，通过分泌足丝将身体固定在基质表面。此时的稚贝形态微小，壳长仅数毫米，需要稳定的环境条件才能顺利度过此阶段。</p>
+            </div>
+          </div>
+          <div class="g-pcard g-pcard-wide" data-expand>
+            <div class="g-pc-header">
+              <div class="g-pc-icon"><i class="fas fa-tools"></i></div>
+              <div class="g-pc-body">
+                <span class="g-pc-label">养护要点</span>
+                <span class="g-pc-value" id="gParamCare">保持水质稳定，提供充足的附着基，控制光照强度</span>
+              </div>
+              <button class="g-pc-toggle"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="g-pc-expand">
+              <p>育苗阶段的养护重点在于维持水质清洁和稳定，定期监测水温、盐度、溶解氧等参数。附着基的选择和准备直接影响幼虫的附着率，光照强度需控制在适宜范围内，避免强光对幼体造成伤害。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 生长曲线 -->
+        <div class="g-stage-chart"><canvas id="gChart" height="100"></canvas></div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<section id="research" class="section">
+  <div class="section-hero-bg" style="background:linear-gradient(135deg,#0a3d5c,#0d5e8a,#1a6b8a,#1a8bc4)">
+    <div class="section-hero-inner">
+      <div class="section-label" style="justify-content:center"><div class="bar"></div><span class="text">研学实践</span></div>
+      <h2 class="section-title">研学实践专区</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,.7);margin:0 auto">扎根一线 · 实景实践 · 沉浸式鲍鱼产业体验</p>
+    </div>
+  </div>
+  <div class="section-inner">
+
+    <!-- 研学足迹时间线 -->
+    <div class="content-block" data-aos>
+      <div class="section-label"><div class="bar"></div><span class="text">研学足迹</span></div>
+      <h2 class="section-title">海愈基地<span class="accent">研学之旅</span></h2>
+      <p class="section-desc" style="margin-bottom:2rem">实践队抵达校友创办的海愈渔旅基地，探寻旧鲍鱼养殖场改造升级的滨海渔旅新模式</p>
+
+      <div class="rx-timeline">
+        <div class="rx-tl-item">
+          <div class="rx-tl-marker"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="rx-tl-card">
+            <div class="rx-tl-content">
+              <span class="rx-tl-time">第一站</span>
+              <h4>抵达海愈渔旅基地</h4>
+              <p>实践队抵达校友创办的海愈渔旅基地。该基地由旧鲍鱼养殖场改造升级而来，通过业态重塑盘活闲置渔业资源，以生态养殖与文旅体验、科技赋能融合，助力滨海乡村振兴。</p>
+            </div>
+            <div class="rx-tl-img" data-lightbox><img src="images/yx1.jpg" alt="海愈渔旅基地" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="rx-tl-item">
+          <div class="rx-tl-marker"><i class="fas fa-leaf"></i></div>
+          <div class="rx-tl-card">
+            <div class="rx-tl-content">
+              <span class="rx-tl-time">第二站</span>
+              <h4>科普讲解 · 深入养殖场</h4>
+              <p>在科普讲解员的带领下，队员们深入鲍鱼养殖场，了解鲍鱼生长习性，参观标准化鲍鱼养殖区域与渔旅融合产业片区，实地探索渔业与文旅融合发展的新模式。</p>
+            </div>
+            <div class="rx-tl-img" data-lightbox><img src="images/yx2.jpg" alt="深入养殖场" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="rx-tl-item">
+          <div class="rx-tl-marker"><i class="fas fa-comments"></i></div>
+          <div class="rx-tl-card">
+            <div class="rx-tl-content">
+              <span class="rx-tl-time">第三站</span>
+              <h4>产业交流 · 跨领域对话</h4>
+              <p>围绕跨领域产业发展与校友进行深入交流，聆听产业从业者分享渔业与文旅、科技融合发展的实战经验，探讨闲置渔业资源价值二次提升的创新路径。</p>
+            </div>
+            <div class="rx-tl-img" data-lightbox><img src="images/yx3.jpg" alt="校友产业交流" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="rx-tl-item">
+          <div class="rx-tl-marker"><i class="fas fa-hand-paper"></i></div>
+          <div class="rx-tl-card">
+            <div class="rx-tl-content">
+              <span class="rx-tl-time">第四站</span>
+              <h4>手工体验 · 海洋文创</h4>
+              <p>队员们亲手体验鲍鱼壳、贝壳手工制作，用取自海洋的原生材料创作出独具特色的海洋文创作品，在动手实践中感受海洋资源的多元价值。</p>
+            </div>
+            <div class="rx-tl-img" data-lightbox><img src="images/yx4.jpg" alt="贝壳手工制作" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 研学感悟 -->
+    <div class="content-block" data-aos>
+      <div class="section-label"><div class="bar"></div><span class="text">研学感悟</span></div>
+      <h2 class="section-title">实践收获与<span class="accent">未来展望</span></h2>
+      <div class="rx-insight-grid">
+        <div class="rx-insight-card" data-aos>
+          <span class="rx-ic-num">01 / 04</span>
+          <div class="rx-ic-icon"><i class="fas fa-lightbulb"></i></div>
+          <h4>产业认知</h4>
+          <p>深入理解了旧养殖场改造升级的渔旅融合新模式，见证了闲置渔业资源通过业态重塑实现价值二次提升的生动实践。</p>
+        </div>
+        <div class="rx-insight-card" data-aos data-aos-delay="1">
+          <span class="rx-ic-num">02 / 04</span>
+          <div class="rx-ic-icon"><i class="fas fa-microscope"></i></div>
+          <h4>科技赋能</h4>
+          <p>观摩智慧海洋数字监测体系，直观感受前沿科创技术如何赋能海洋养殖产业，坚定了数智赋能海洋产业的信心。</p>
+        </div>
+        <div class="rx-insight-card" data-aos data-aos-delay="2">
+          <span class="rx-ic-num">03 / 04</span>
+          <div class="rx-ic-icon"><i class="fas fa-hands-helping"></i></div>
+          <h4>校友传承</h4>
+          <p>聆听校友跨领域融合发展经验，感受校友扎根一线、向海图强的创业精神，激发实践队员的专业认同与使命感。</p>
+        </div>
+        <div class="rx-insight-card" data-aos data-aos-delay="3">
+          <span class="rx-ic-num">04 / 04</span>
+          <div class="rx-ic-icon"><i class="fas fa-flag"></i></div>
+          <h4>向海图强</h4>
+          <p>实践队将坚守实践初心，立足专业所长，以实干行动持续探索向海图强的实践方案，助力滨海产业振兴。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 照片墙 -->
+    <div class="content-block" data-aos>
+      <div class="section-label"><div class="bar"></div><span class="text">照片墙</span></div>
+      <h2 class="section-title">研学实景<span class="accent">照片墙</span></h2>
+      <div class="photo-grid">
+        <div class="photo-item photo-lg" data-lightbox><img src="images/zp1.jpg" alt="" loading="lazy"></div>
+        <div class="photo-item" data-lightbox><img src="images/zp2.jpg" alt="" loading="lazy"></div>
+        <div class="photo-item" data-lightbox><img src="images/zp3.jpg" alt="" loading="lazy"></div>
+        <div class="photo-item" data-lightbox><img src="images/zp4.jpg" alt="" loading="lazy"></div>
+        <div class="photo-item" data-lightbox><img src="images/zp5.jpg" alt="" loading="lazy"></div>
+        <div class="photo-item photo-w" data-lightbox><img src="images/zp6.jpg" alt="" loading="lazy"></div>
+        <div class="photo-item" data-lightbox><img src="images/zp7.jpg" alt="" loading="lazy"></div>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+<!-- 灯箱 -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightboxClose" aria-label="关闭"><i class="fas fa-times"></i></button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="site-footer">
+  <div class="footer-glow"></div>
+  <div class="footer-glow"></div>
+  <div class="section-inner">
+    <div class="footer-content">
+      <div class="footer-brand"><i class="fas fa-fish"></i> 海愈·东山岛 渔旅示范基地</div>
+      <div class="footer-links">
+        <a href="#hero">首页</a><a href="#overview">基地概况</a><a href="#platform">鲍鱼生长</a><a href="#research">研学实践</a>
+      </div>
+      <div class="footer-line"></div>
+      <p class="footer-copy">© 2026 海愈·东山岛 &nbsp;·&nbsp; 数智兴渔 · 旧场焕新</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== 返回顶部 ==================== -->
+<button id="scrollTop" class="scroll-top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
