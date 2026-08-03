@@ -13,20 +13,36 @@ function qs(s){return document.querySelector(s)}
 function qa(s){return document.querySelectorAll(s)}
 
 // ===== 加载器 =====
-window.addEventListener('load',function(){
+// 立即启动进度，不再绑定 window.load，避免被CDN/背景图拖死而卡在0%
+(function(){
+  var loaderEl = $('loader');
+  if (!loaderEl) return;
   var pct = $('loaderPct');
   var bar = document.querySelector('.loader-bar-inner');
   var progress = 0;
+  var done = false;
+  function finish(){
+    if (done) return;
+    done = true;
+    progress = 100;
+    if (pct) pct.textContent = '100%';
+    if (bar) bar.style.width = '100%';
+    setTimeout(function(){ loaderEl.classList.add('done'); }, 400);
+  }
+  // 假进度：快速爬到90%附近，制造"正在加载"的实时反馈
   var timer = setInterval(function(){
-    progress += Math.random() * 18 + 5;
-    if (progress >= 100) { progress = 100; clearInterval(timer); }
+    progress += Math.random() * 10 + 4;
+    if (progress >= 90) { progress = 90; } // 卡在90%，等资源就绪再收尾
     if (pct) pct.textContent = Math.floor(progress) + '%';
     if (bar) bar.style.width = progress + '%';
-    if (progress >= 100) {
-      setTimeout(function(){ $('loader').classList.add('done'); }, 400);
-    }
   }, 200);
-});
+  // 资源全部就绪 → 跳100%收尾
+  function onLoad(){ clearInterval(timer); finish(); }
+  if (document.readyState === 'complete') { onLoad(); }
+  else { window.addEventListener('load', onLoad); }
+  // 兜底：最多7秒强制收尾，防止CDN超时导致load永不触发、loader永久转圈
+  setTimeout(function(){ clearInterval(timer); finish(); }, 7000);
+})();
 
 // ===== 导航 =====
 var navbar = $('navbar');
