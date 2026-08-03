@@ -69,7 +69,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
 /* ===== Hero ===== */
-.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,rgba(10,61,92,.78),rgba(13,94,138,.6),rgba(26,107,138,.5)),url(../images/DSC07325.JPG) center/cover no-repeat}
+.hero{position:relative;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,rgba(10,61,92,.78),rgba(13,94,138,.6),rgba(26,107,138,.5)),url(../DSC07325.JPG) center/cover no-repeat}
 #heroCanvas{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero-content{position:relative;z-index:2;max-width:800px;padding:0 2rem;text-align:center}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(26,188,156,.15);border:1px solid rgba(26,188,156,.45);color:var(--teal);font-size:.8rem;letter-spacing:.2em;padding:.4rem 1.2rem;border-radius:50px;margin-bottom:2rem;backdrop-filter:blur(4px)}
