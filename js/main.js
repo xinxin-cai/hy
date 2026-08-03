@@ -29,10 +29,11 @@ function qa(s){return document.querySelectorAll(s)}
     if (bar) bar.style.width = '100%';
     setTimeout(function(){ loaderEl.classList.add('done'); }, 400);
   }
-  // 假进度：快速爬到90%附近，制造"正在加载"的实时反馈
+  // 假进度：持续递增，越接近100越慢（渐近），不会冻住
   var timer = setInterval(function(){
-    progress += Math.random() * 10 + 4;
-    if (progress >= 90) { progress = 90; } // 卡在90%，等资源就绪再收尾
+    var remain = 100 - progress;
+    if (remain <= 0.5) return; // 离100只差一点就不动了，等真完成收尾
+    progress += remain * 0.06 + Math.random() * 1.5; // 按剩余比例递减，永远在动但越来越慢
     if (pct) pct.textContent = Math.floor(progress) + '%';
     if (bar) bar.style.width = progress + '%';
   }, 200);
